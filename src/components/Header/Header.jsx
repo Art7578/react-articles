@@ -26,6 +26,9 @@ export const Header = () => {
         <div className={css.buttons}>
           {isAuth ? (
             <>
+              <Link to="/add-post">
+                <button className="button-outlined" variant="contained">Write the article</button>
+              </Link>
               <button onClick={onClickLogout} className="button-contained button-error">
                 Log out
               </button>

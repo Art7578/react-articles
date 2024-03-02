@@ -5,6 +5,7 @@ import { Home } from "./pages/Home/Home";
 import { Registration } from "./pages/Registration/Registration";
 import { Login } from "./pages/Login/Login";
 import { FullPost } from "./pages/FullPost ";
+import { AddPost } from "./pages/AddPost/AddPost";
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
         <Route path="/posts/:id" element={<FullPost />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Registration />}/>
+        <Route path="/posts/:id/edit" element={<AddPost />}/>
+        <Route path="/add-post" element={<AddPost />}/>
       </Routes>
     </div>
     </>

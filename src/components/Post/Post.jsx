@@ -69,7 +69,7 @@ export const Post = ({
           </ul>
           {children && <div className={css.content}>{children}</div>}
           <span className={css.postDetails}>Views: {viewsCount}</span>
-        </div>
+         </div>
       </div>
     </div>
   );
