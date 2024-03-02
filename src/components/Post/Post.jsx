@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import styles from './Post.module.css';
+import css from './Post.module.css';
 import { UserInfo } from '../UserInfo/UserInfo';
 import { PostSkeleton } from './Skeleton';
 import { fetchRemovePost } from '../../redux/slices/posts';
@@ -34,45 +34,41 @@ export const Post = ({
   };
 
   return (
-    <div className={styles.root + (isFullPost ? ' ' + styles.rootFull : '')}>
+    <div className={css.root + (isFullPost ? ' ' + css.rootFull : '')}>
       {isEditable && (
-        <div className={styles.editButtons}>
+        <div className={css.editButtons}>
           <Link to={`/posts/${id}/edit`}>
-            <button className={styles.button + ' ' + styles.primaryButton}>
+            <button className={css.button + ' ' + css.primaryButton}>
               Edit
             </button>
           </Link>
-          <button onClick={onClickRemove} className={styles.button + ' ' + styles.secondaryButton}>
+          <button onClick={onClickRemove} className={css.button + ' ' + css.secondaryButton}>
             Delete
           </button>
         </div>
       )}
       {imageUrl && (
         <img
-          className={styles.image + (isFullPost ? ' ' + styles.imageFull : '')}
+          className={css.image + (isFullPost ? ' ' + css.imageFull : '')}
           src={imageUrl}
           alt={title}
         />
       )}
-      <div className={styles.wrapper}>
+      <div className={css.wrapper}>
         <UserInfo {...user} additionalText={createdAt} />
-        <div className={styles.indention}>
-          <h2 className={styles.title + (isFullPost ? ' ' + styles.titleFull : '')}>
+        <div className={css.indention}>
+          <h2 className={css.title + (isFullPost ? ' ' + css.titleFull : '')}>
             {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
           </h2>
-          <ul className={styles.tags}>
+          <ul className={css.tags}>
             {tags.map((name) => (
               <li key={name}>
                 <Link to={`/tag/${name}`}>#{name}</Link>
               </li>
             ))}
           </ul>
-          {children && <div className={styles.content}>{children}</div>}
-          <ul className={styles.postDetails}>
-            <li>
-              <span>Views: {viewsCount}</span>
-            </li>
-          </ul>
+          {children && <div className={css.content}>{children}</div>}
+          <span className={css.postDetails}>Views: {viewsCount}</span>
         </div>
       </div>
     </div>

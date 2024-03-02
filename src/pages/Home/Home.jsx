@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from './Home.module.css';
+import css from './Home.module.css';
 
 import { Post } from '../../components/Post/Post';
 import { TagsBlock } from '../../components/TagsBlock/TagsBlock';
@@ -17,21 +17,22 @@ export const Home = () => {
   React.useEffect(() => {
     dispatch(fetchPost());
     dispatch(fetchTags())
-  }, [])
+  }, [dispatch])
 
   return (
     <>
-      <div className={styles.tabs}>
-        <div className={styles.tab}>New</div>
-        <div className={styles.tab}>Popular</div>
+      <div className={css.tabs}>
+        <div className={css.tab}>New</div>
+        <div className={css.tab}>Popular</div>
       </div>
-      <div className={styles.gridContainer}>
-        <div className={styles.gridItem}>
+      <div className={css.gridContainer}>
+        <div className={css.gridItem}>
           {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) =>
             isPostsLoading ? (
               <Post key={index} isLoading={true} />
             ) : (
               <Post
+                key={obj._id}
                 id={obj._id}
                 title={obj.title}
                 imageUrl={obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ''}
@@ -45,7 +46,7 @@ export const Home = () => {
             ),
           )}
         </div>
-        <div className={styles.gridItem}>
+        <div className={css.tagsItem}>
           <TagsBlock items={tags.items} isLoading={isTagsLoading} />
         </div>
       </div>
