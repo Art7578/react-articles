@@ -1,44 +1,53 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './Home.module.css';
 
 import { Post } from '../../components/Post/Post';
-import { fetchPost } from '../../redux/slices/posts';
+import { TagsBlock } from '../../components/TagsBlock/TagsBlock';
+import { fetchPost, fetchTags } from '../../redux/slices/posts';
 
 export const Home = () => {
   const dispatch = useDispatch();
-  const { posts } = useSelector(state => state.posts);
+  const { posts, tags } = useSelector(state => state.posts);
   const userData = useSelector(state => state.auth.data);
 
   const isPostsLoading = posts.status === 'loading';
+  const isTagsLoading = tags.status === 'loading';
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(fetchPost());
+    dispatch(fetchTags())
   }, [])
 
   return (
     <>
-      <div style={{ marginBottom: 15 }}>
-        <button>New</button>
-        <button>Popular</button>
+      <div className={styles.tabs}>
+        <div className={styles.tab}>New</div>
+        <div className={styles.tab}>Popular</div>
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        {(isPostsLoading ? Array(5).fill() : posts.items).map((obj, index) =>
-          isPostsLoading ? (
-            <Post key={index} isLoading={true} />
-          ) : (
+      <div className={styles.gridContainer}>
+        <div className={styles.gridItem}>
+          {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) =>
+            isPostsLoading ? (
+              <Post key={index} isLoading={true} />
+            ) : (
               <Post
-                key={index}
                 id={obj._id}
                 title={obj.title}
                 imageUrl={obj.imageUrl ? `http://localhost:4444${obj.imageUrl}` : ''}
                 user={obj.user}
                 createdAt={obj.createdAt}
                 viewsCount={obj.viewsCount}
+                commentsCount={3}
                 tags={obj.tags}
                 isEditable={userData?._id === obj.user._id}
               />
             ),
-        )}
+          )}
+        </div>
+        <div className={styles.gridItem}>
+          <TagsBlock items={tags.items} isLoading={isTagsLoading} />
+        </div>
       </div>
     </>
   );
