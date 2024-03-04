@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import SimpleMDE from 'react-simplemde-editor';
+import { Link } from 'react-router-dom';
 import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import { useState, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -137,9 +138,9 @@ export const AddPost = () => {
         <button onClick={onSubmit} style={{ marginRight: '10px', padding: '10px' }}>
           {isEditing ? 'Save' : 'Опубликовать'}
         </button>
-        <a href="/">
+        <Link to="/">
           <button style={{ padding: '10px' }}>Отмена</button>
-        </a>
+        </Link>
       </div>
     </div>
   );

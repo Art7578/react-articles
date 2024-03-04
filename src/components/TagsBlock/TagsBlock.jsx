@@ -1,5 +1,6 @@
 import React from "react";
 import { SideBlock } from "../SideBlock/SideBlock";
+import { Link } from "react-router-dom";
 import css from "./TagsBlock.module.css";
 
 export const TagsBlock = ({ items, isLoading = true }) => {
@@ -7,11 +8,7 @@ export const TagsBlock = ({ items, isLoading = true }) => {
     <SideBlock title="Tags">
       <ul className={css.list}>
         {(isLoading ? [...Array(5)] : items).map((name, i) => (
-          <a
-            key={i}
-            className={css.link}
-            href={`/tags/${name}`}
-          >
+          <Link key={i} className={css.link} to={`/tag/${name}`}>
             <li className={css.listItem}>
               <span className={css.icon}>#</span>
               {isLoading ? (
@@ -20,7 +17,7 @@ export const TagsBlock = ({ items, isLoading = true }) => {
                 <span className={css.text}>{name}</span>
               )}
             </li>
-          </a>
+          </Link>
         ))}
       </ul>
     </SideBlock>
