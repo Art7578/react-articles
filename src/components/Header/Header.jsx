@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import css from './Header.module.css';
 
@@ -9,6 +9,11 @@ import { logout, selectIsAuth } from "../../redux/slices/auth";
 export const Header = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
+  const location = useLocation();
+
+  const isActiveRoute = (route) => {
+    return location.pathname === route;
+  };
 
   const onClickLogout = () => {
     if (window.confirm('Are you sure you want to log?')) {
@@ -27,19 +32,19 @@ export const Header = () => {
           {isAuth ? (
             <>
               <Link to="/add-post">
-                <button className="button-outlined" variant="contained">Write the article</button>
+                <button className={css.button_add}>Write the article</button>
               </Link>
-              <button onClick={onClickLogout} className="button-contained button-error">
+              <button onClick={onClickLogout} className={css.button_error}>
                 Log out
               </button>
             </>
           ) : (
             <>
               <Link to="/login">
-                <button className="button-outlined">Log In</button>
+                <button className={isActiveRoute('/login') ? `${css.button_contained} ${css.active}` : css.button_contained}>Log In</button>
               </Link>
               <Link to="/register">
-                <button className="button-contained">Register</button>
+                <button className={isActiveRoute('/register') ? `${css.button_contained} ${css.active}` : css.button_contained}>Register</button>
               </Link>
             </>
           )}
