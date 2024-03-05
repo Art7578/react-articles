@@ -5,6 +5,7 @@ import css from "./TagsBlock.module.css";
 
 export const TagsBlock = ({ items, isLoading = true }) => {
   return (
+    <div className={css.block}>
     <SideBlock title="Tags">
       <ul className={css.list}>
         {(isLoading ? [...Array(5)] : items).map((name, i) => (
@@ -21,5 +22,6 @@ export const TagsBlock = ({ items, isLoading = true }) => {
         ))}
       </ul>
     </SideBlock>
+    </div>
   );
 };
