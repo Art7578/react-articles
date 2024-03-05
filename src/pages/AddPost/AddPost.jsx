@@ -102,44 +102,42 @@ export const AddPost = () => {
   }
 
   return (
-    <div style={{ padding: '30px' }}>
-      <button onClick={() => inputFileRef.current.click()} style={{ marginBottom: '10px' }}>
+    <div className={css.container}>
+      <button className={css.preview_button} onClick={() => inputFileRef.current.click()}>
         Preview
       </button>
       <input ref={inputFileRef} type="file" onChange={handleChangeFile} style={{ display: 'none' }} />
       {imageUrl && (
-        <>
-          <button onClick={onClickRemoveImage} style={{ marginBottom: '10px' }}>
+        <div className={css.imageContainer}>
+          <button className={css.delete_button} onClick={onClickRemoveImage}>
             Delete
           </button>
           <img className={css.image} src={`http://localhost:4444${imageUrl}`} alt="Uploaded" />
-        </>
+        </div>
       )}
       <br />
       <br />
       <input
-        className={css.title}
+        className={css.title_input}
         type="text"
-        placeholder="Заголовок статьи..."
+        placeholder="Article title..."
         value={title}
         onChange={e => setTitle(e.target.value)}
-        style={{ width: '100%', marginBottom: '10px' }}
       />
       <input
-        className={css.tags}
+        className={css.tags_input}
         type="text"
-        placeholder="Тэги"
+        placeholder="Tags"
         value={tags}
         onChange={e => setTags(e.target.value)}
-        style={{ width: '100%', marginBottom: '10px' }}
       />
       <SimpleMDE className={css.editor} value={text} onChange={onChange} options={options} />
       <div className={css.buttons}>
-        <button onClick={onSubmit} style={{ marginRight: '10px', padding: '10px' }}>
-          {isEditing ? 'Save' : 'Опубликовать'}
+        <button className={css.submit_button} onClick={onSubmit}>
+          {isEditing ? 'Save' : 'Publish'}
         </button>
         <Link to="/">
-          <button style={{ padding: '10px' }}>Отмена</button>
+          <button className={css.cancel_button}>Cancel</button>
         </Link>
       </div>
     </div>

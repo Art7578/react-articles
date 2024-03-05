@@ -1,4 +1,4 @@
-.title input {
+/* .title input {
     font-size: 42px;
     font-weight: 900;
 }
@@ -9,7 +9,10 @@
 }
 
 .image {
-    width: 100%;
+    width: 500px;
+    height: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .tags {
@@ -36,4 +39,89 @@
 
 .buttons button {
     margin-right: 15px;
+} */
+
+.container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.preview_button {
+  width: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete_button {
+  width: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.image {
+  width: 500px;
+  height: 300px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.title_input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.tags_input {
+  width: 50%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.editor {
+  width: 50%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.submit_button {
+  padding: 10px;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel_button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #ccc;
+  color: black;
+  border: none;
+  cursor: pointer;
 }
