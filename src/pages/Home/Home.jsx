@@ -23,7 +23,6 @@ export const Home = () => {
 
   const filteredPosts = () => {
     if (activeTab === 'New') {
-      // Filter posts created today
       return isPostsLoading
         ? [...Array(5)]
         : posts.items.filter(
@@ -31,23 +30,20 @@ export const Home = () => {
               new Date(post.createdAt).toDateString() === new Date().toDateString()
           );
     } else if (activeTab === 'Popular') {
-      // Filter posts with viewsCount > 10
       return isPostsLoading
         ? [...Array(5)]
         : posts.items.filter((post) => post.viewsCount > 10);
     } else {
-      // Return all posts if activeTab is null
       return isPostsLoading ? [...Array(5)] : posts.items;
     }
   };
 
   const handleTabClick = (tab) => {
-    // If the same tab is clicked again, reset activeTab to null
     setActiveTab(activeTab === tab ? null : tab);
   };
 
   return (
-    <>
+    <div className={css.container}>
       <div className={css.tabs}>
         <button
           className={css.tab}
@@ -89,6 +85,6 @@ export const Home = () => {
           <TagsBlock items={tags.items} isLoading={isTagsLoading} />
         </div>
       </div>
-    </>
+    </div>
   );
 };
