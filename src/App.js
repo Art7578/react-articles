@@ -6,7 +6,7 @@ import { Registration } from "./pages/Registration/Registration";
 import { Login } from "./pages/Login/Login";
 import { FullPost } from "./pages/FullPost ";
 import { AddPost } from "./pages/AddPost/AddPost";
-import TagPage from "./pages/TagPage/TagPage";
+import { TagPage } from "./pages/TagPage/TagPage";
 
 function App() {
 
