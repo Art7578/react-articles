@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { fetchAuth, selectIsAuth } from "../../redux/slices/auth";
 
-import css from "./Login.module.css";
+import css from "../Registration/Registration.module.css";
 
 export const Login = () => {
   const isAuth = useSelector(selectIsAuth);
@@ -38,29 +38,33 @@ export const Login = () => {
   }
 
   return (
-    <div className={css.root}>
-      <h5 className={css.title}>Вход в аккаунт</h5>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          className={css.field}
-          placeholder="E-Mail"
-          type="email"
-          {...register('email', { required: 'Enter your email' })}
-        />
-        {errors.email && <span className={css.error}>{errors.email.message}</span>}
-        <br />
-        <input
-          className={css.field}
-          placeholder="Password"
-          type="password"
-          {...register('password', { required: 'Enter your password' })}
-        />
-        {errors.password && <span className={css.error}>{errors.password.message}</span>}
-        <br />
-        <button disabled={!isValid} type="submit">
-          Log in
-        </button>
-      </form>
+    <div className={css.container}>
+      <h2 className={css.title}>Authorization</h2>
+      <div className={css.formContainer}>
+        <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
+          <label className={css.label}>
+            E-Mail
+            <input
+              type="email"
+              {...register('email', {required: 'Enter your email'})}
+              className={css.input}
+            />
+            {errors.email && <span className={css.error}>{errors.email.message}</span>}
+          </label>
+          <label className={css.label}>
+            Password
+            <input
+              type="password"
+              {...register('password', {required: 'Enter your password'})}
+              className={css.input}
+            />
+            {errors.password && <span className={css.error}>{errors.password.message}</span>}
+          </label>
+          <button disabled={!isValid} type="submit" className={css.button}>
+            Log In
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
