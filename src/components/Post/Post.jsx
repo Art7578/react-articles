@@ -57,7 +57,7 @@ export const Post = ({
       <div className={css.wrapper}>
         <UserInfo {...user} additionalText={createdAt} />
         <div className={css.indention}>
-          <h2 className={css.title + (isFullPost ? ' ' + css.titleFull : '')}>
+          <h2 className={`${css.title} ${isFullPost ? '' : css.ellipsis}`} style={{ width: isFullPost ? 'auto' : '450px' }}>
             {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
           </h2>
           <ul className={css.tags}>

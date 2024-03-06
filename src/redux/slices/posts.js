@@ -7,8 +7,8 @@ export const fetchPost = createAsyncThunk('/posts/fetchPost', async () => {
 })
 
 export const fetchTags = createAsyncThunk('/posts/fetchTags', async () => {
-    const {data} = await axios.get('/tags');
-    return data;
+  const { data } = await axios.get('/posts/tags'); // Исправлено на /posts/tags
+  return data;
 })
 
 export const fetchRemovePost = createAsyncThunk('/posts/fetchRemovePost', async (id) => {
